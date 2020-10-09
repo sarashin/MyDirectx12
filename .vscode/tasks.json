@@ -1,0 +1,78 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "build",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"dependsOn": [
+				"compile",
+				"link"
+			],
+			"dependsOrder": "sequence",
+			"problemMatcher": [
+				"$gcc"
+			]
+		},
+		{
+			"type": "shell",
+			"label": "compile",
+			"command": "g++.exe",
+			"args": [
+				"-g",
+				"-c",
+				"${file}",
+				"-I${workspaceFolder}/header",
+				"-IC:/MinGW/lib/gcc/mingw32/9.2.0/include/c++",
+				"-IC:/Program Files (x86)/Windows Kits/10/Include/10.0.19041.0",
+				"-mwindows"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			]
+		},
+		{
+			"type": "shell",
+			"label": "link",
+			"command": "g++",
+			"args": [
+				"-g",
+				"${fileBasenameNoExtension}.o",
+				"stdafx.o",
+				"-o",
+				"${workspaceFolder}\\${fileBasenameNoExtension}.exe",
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			]
+		},
+		{
+			"type": "shell",
+			"label": "pre compile",
+			"command": "g++.exe",
+			"args": [
+				"-g",
+				"-c",
+				"C:/Users/ambition/Documents/vscode/dx/cpp/stdafx.cpp",
+				"-I${workspaceFolder}/header",
+				"-IC:/MinGW/lib/gcc/mingw32/9.2.0/include/c++",
+				"-IC:/Program Files (x86)/Windows Kits/10/Include/10.0.19041.0",
+				"-mwindows"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			]
+		}
+	]
+}
